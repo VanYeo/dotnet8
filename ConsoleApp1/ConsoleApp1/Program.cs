@@ -1,45 +1,54 @@
-﻿Console.WriteLine("Hello!");
-Console.WriteLine("Input the first number:");
-string input1 = Console.ReadLine();
-int number1 = int.Parse(input1);
+﻿// regular switch statements
 
-Console.WriteLine("Input the second number:");
-string input2 = Console.ReadLine();
-int number2 = int.Parse(input2);
-
-Console.WriteLine("What do you want to do?");
-Console.WriteLine("[A]dd numbers");
-Console.WriteLine("[S]ubtract numbers");
-Console.WriteLine("[M]ultiply numbers");
-string choice = Console.ReadLine();
-
-if (EqualsCaseInsensitive(choice, "M"))
-    {
-        PrintFinalEquation(number1, number2, "+", number1 + number2);
-    }
-    else if (EqualsCaseInsensitive(choice, "A"))
-    {
-        PrintFinalEquation(number1, number2, "+", number1 + number2);
-    }
-    else if (EqualsCaseInsensitive(choice, "S"))
-    {
-        PrintFinalEquation(number1, number2, "-", number1 - number2);
-    }
-    else
-    {
-        Console.WriteLine("Invalid choice!");
-    }
-
-void PrintFinalEquation(
-    int number1,
-    int number2,
-    string @operator, //@ to bypass operator keyword
-    int result)
+char ConvertPointsToGrade(int points)
 {
-    Console.WriteLine($"{number1} {@operator} {number2} = {result}");
+    char grade;
+    switch (points)
+    {
+        case 90:
+            grade = 'A';
+            break;
+        case 80:
+            grade = 'B';
+            break;
+        case 70:
+            grade = 'C';
+            break;
+        case 60:
+            grade = 'D';
+            break;
+        default:
+            grade = 'F';
+            break;
+    }
+    return grade;
 }
 
-bool EqualsCaseInsensitive(string str1, string str2)
+//swtich statements (clean ver)
+
+char ConvertPointsToGrade2(int points)
 {
-    return str1.ToUpper() == str2.ToUpper();
+        return points switch
+        {
+            90 => 'A',
+            80 => 'B',
+            70 => 'C',
+            60 => 'D',
+            _ => 'F',
+        };
+}
+
+// switch with pattern matching
+
+char ConvertPointsToGrade3(int points)
+{
+    return points switch
+    {
+        >=90 => 'A',
+        >=80 => 'B',
+        >=70 => 'C',
+        >=60 => 'D',
+        _ => 'F', //anything below 50 is an F
+    }
+;
 }
