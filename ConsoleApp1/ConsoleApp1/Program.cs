@@ -1,54 +1,22 @@
-﻿// regular switch statements
+﻿//var number = 0;
 
-char ConvertPointsToGrade(int points)
+//while (number < 10)
+//{
+//    number = number + 1;
+//    Console.WriteLine("Number is: " + number);
+//}
+
+//Console.WriteLine("The loop is finished");
+
+int CalculateSumOfNumbersBetween(int firstNumber, int lastNumber)
 {
-    char grade;
-    switch (points)
-    {
-        case 90:
-            grade = 'A';
-            break;
-        case 80:
-            grade = 'B';
-            break;
-        case 70:
-            grade = 'C';
-            break;
-        case 60:
-            grade = 'D';
-            break;
-        default:
-            grade = 'F';
-            break;
-    }
-    return grade;
+   var sum = 0;
+   while (firstNumber <= lastNumber)
+   {
+        sum += firstNumber;
+        firstNumber++;
+   }
+    return sum;
 }
 
-//swtich statements (clean ver)
-
-char ConvertPointsToGrade2(int points)
-{
-        return points switch
-        {
-            90 => 'A',
-            80 => 'B',
-            70 => 'C',
-            60 => 'D',
-            _ => 'F',
-        };
-}
-
-// switch with pattern matching
-
-char ConvertPointsToGrade3(int points)
-{
-    return points switch
-    {
-        >=90 => 'A',
-        >=80 => 'B',
-        >=70 => 'C',
-        >=60 => 'D',
-        _ => 'F', //anything below 50 is an F
-    }
-;
-}
+Console.WriteLine(CalculateSumOfNumbersBetween(5,8));
