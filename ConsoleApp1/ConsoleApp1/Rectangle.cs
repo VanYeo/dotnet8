@@ -8,7 +8,7 @@ class Rectangle
     public Rectangle(int width, int height)
     {
         Width = GetLengthOrDefault(width, nameof(Width));
-        _height = GetLengthOrDefault(height, nameof(Height));
+        _height = GetLengthOrDefault(height, nameof(_height));
     }
 
     public int GetHeight() => _height;
@@ -22,7 +22,7 @@ class Rectangle
     public int Width1 { get; private set; }
     public void SetHeight(int height)
     {
-        _height = GetLengthOrDefault(height, nameof(Height));
+        _height = GetLengthOrDefault(height, nameof(_height));
     }
 
     private int GetLengthOrDefault(int length, string name)
