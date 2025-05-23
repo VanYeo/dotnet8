@@ -1,4 +1,6 @@
 ﻿// constructor call taking year, month, date, time
+using System.Drawing;
+
 var IntPizzaDay = new DateTime(2023, 3, 14);
 
 var rectangle1 = new Rectangle(5, 10);
@@ -14,29 +16,34 @@ dog1.Describe();
 //Console.WriteLine($"Area is {rectangle1.CalculateArea()}");
 class Rectangle
 {
-    // public access modifier allows global access
-    // public vars should start w capital letters
-    public int Width;
-    public int Height;
+    // fields: variable like
+    public readonly int Width;
+    private int _height;
 
-    // constructor that assigns values of params to fields
-    // must be named same as class name + no return type
-    // cannnot be called like a method in other contexts
     public Rectangle(int width, int height)
     {
-        Width = width;
-        Height = height;    
-    }
-    
-    public int CalculateCircumference()
-    {
-        return 2 * (Width + Height);
+        Width = GetLengthOrDefault(width, nameof(Width));
+        _height = GetLengthOrDefault(height, nameof(Height));
     }
 
-    public int CalculateArea()
+    public int GetHeight() => _height;
+
+    // properties: fields but with getters and setters
+    public int Width1 { get; private set; }
+    public void SetHeight(int height)
     {
-        return Width * Height;
+        _height = GetLengthOrDefault(height, nameof(Height));
     }
+
+    private int GetLengthOrDefault(int length, string name)
+    {
+        if (length < 0)
+        {
+            Console.WriteLine($"Invalid {name} value. Setting to default value of 1.");
+            return 1;
+        }
+        return length;
+    } 
 }
 
 class HotelBooking
@@ -104,4 +111,12 @@ class Dog
     {
         Console.WriteLine($"This dog is named {Name}, it's a {Breed}, and it weighs {Weight} kilograms, so it's a {WeightDescription()} dog");
     }
+}
+
+
+class Order
+{
+
+    public int Item { get; }
+    public DateTime @DateTime { get; set; }
 }
