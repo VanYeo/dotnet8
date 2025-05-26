@@ -1,8 +1,13 @@
 ﻿using System;
 
-public class Class1
+// class must be static to be an extension 
+public static class StringExtensions
 {
-	public Class1()
+    // method must be static
+	// take 'this' and type as first parameter
+	
+    public static int CountLines(this string input) => 
+		input.Split(Environment.NewLine).Length;
 	{
 	}
 }

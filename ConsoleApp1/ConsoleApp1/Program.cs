@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices.Marshalling;
 using System.Linq;
 using System.Collections.Generic;
+using ConsoleApp1.Extensions;
 
 var pizza = new Pizza();
 
@@ -16,6 +17,8 @@ int CountLines(string input) =>
     input.Split(Environment.NewLine).Length;
 
 var ingredient = new Ingredient(5);
+
+Console.WriteLine(multiLineText.CountLines);
 
 // is operator checks if the object is of a specific type
 Console.WriteLine($"Is object: {ingredient is object}");
